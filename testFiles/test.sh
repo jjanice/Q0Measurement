@@ -1,0 +1,16 @@
+#!/bin/bash
+while true
+do
+total=0
+for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+  do
+    val=`caget -t CLL:CM02:2301:DS:LVL`
+    total=`echo "scale=3; $total+$val" | bc`
+    echo -n "."
+    sleep 1
+done
+echo "."
+dd=`date`
+ave=`echo "scale=3; $total/20.0" | bc`
+echo -n "$dd $ave "
+done
